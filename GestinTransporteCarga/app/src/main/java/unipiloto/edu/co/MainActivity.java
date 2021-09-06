@@ -15,6 +15,7 @@ import unipiloto.edu.co.utilidades.Utilidades;
 
 public class MainActivity extends AppCompatActivity {
 EditText correo,password;
+    String CorreoUsuario;
     ConexionSQLiteHelper conn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ EditText correo,password;
         try {
             if (correo.getText().toString().equals(cursor.getString(0))){
                 if (password.getText().toString().equals(cursor.getString(1))){
+                    CorreoUsuario=cursor.getString(0);
                     cursor.close();
                     Intent intent = new Intent(this,InicioCliente.class);
                     startActivity(intent);
@@ -51,12 +53,9 @@ EditText correo,password;
             }
             cursor.close();
         }catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "INCORRECTO", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "CORREO O PASSWORD INCORRECTO", Toast.LENGTH_LONG).show();
         }
 
     }
-public  void entra(){
 
-
-}
 }
