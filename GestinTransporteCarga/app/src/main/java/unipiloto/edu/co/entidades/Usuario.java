@@ -17,7 +17,6 @@ public class Usuario {
         this.rol = rol;
     }
 
-
     public String getNombre() {
         return nombre;
     }
