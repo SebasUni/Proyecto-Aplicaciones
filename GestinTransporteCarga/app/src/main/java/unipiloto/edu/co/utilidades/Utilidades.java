@@ -17,8 +17,10 @@ public class Utilidades {
     public static String CAMPO_DIRECCIONDESTINO="direccionDestino";
     public static String CAMPO_DIMENSIONALTO="dimensionAltura";
     public static String CAMPO_DIMESIONANCHO="dimensionAncho";
-    public static String CAMPO_CORREOU="correo";
+    public static String CAMPO_ESTADO="estado";
+    public static String CAMPO_CORREOPROPIETARIO="correopropietario";
 
-    public static final String CREAR_TABLA_SOLICITUDES="CREATE TABLE "+""+TABLA_SOLICITUDES+"("+CAMPO_DIRECCIONRECOGIDA+" TEXT, "+CAMPO_DIRECCIONDESTINO+" TEXT, "+CAMPO_DIMENSIONALTO+" TEXT,"+CAMPO_DIMESIONANCHO+" TEXT, "+CAMPO_CORREOU+" TEXT)";
+
+    public static final String CREAR_TABLA_SOLICITUDES="CREATE TABLE "+""+TABLA_SOLICITUDES+"("+CAMPO_DIRECCIONRECOGIDA+" TEXT, "+CAMPO_DIRECCIONDESTINO+" TEXT, "+CAMPO_DIMENSIONALTO+" TEXT,"+CAMPO_DIMESIONANCHO+" TEXT, "+CAMPO_ESTADO+" TEXT, "+CAMPO_CORREOPROPIETARIO+" TEXT)";
 
 }

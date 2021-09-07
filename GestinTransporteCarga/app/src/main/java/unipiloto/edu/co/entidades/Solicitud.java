@@ -5,21 +5,34 @@ public class Solicitud {
     private String direccionDestino;
     private String dimensionAltura;
     private String dimensionAncho;
-    private String correo;
-    public Solicitud(String direccionRecogida, String direccionDestino, String dimensionAltura, String dimensionAncho, String correo) {
+    private String estado;
+    private String correopropietario;
+    public Solicitud(String direccionRecogida, String direccionDestino, String dimensionAltura, String dimensionAncho, String estado,String correopropietario) {
         this.direccionRecogida = direccionRecogida;
         this.direccionDestino = direccionDestino;
         this.dimensionAltura = dimensionAltura;
         this.dimensionAncho = dimensionAncho;
-        this.correo=correo;
+        this.estado=estado;
+        this.correopropietario=correopropietario;
+    }
+    public Solicitud() {
+
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getCorreopropietario() {
+        return correopropietario;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setCorreopropietario(String correopropietario) {
+        this.correopropietario = correopropietario;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public String getDireccionRecogida() {

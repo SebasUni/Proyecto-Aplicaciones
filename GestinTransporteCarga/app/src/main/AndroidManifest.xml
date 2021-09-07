@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GestiónTransporteCarga">
         <activity
+            android:name=".AceptacionSolicitudesPropietario"
+            android:exported="true" />
+        <activity
+            android:name=".InicioPropietario"
+            android:exported="true" />
+        <activity
             android:name=".SolicituTransporteCliente"
             android:exported="true" />
         <activity

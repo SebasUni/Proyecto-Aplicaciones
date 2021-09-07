@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GestiónTransporteCarga</string>
-    <string name="correo">Correeo</string>
-    <string name="Password">Password</string>
+    <string name="correo">Correeo:</string>
+    <string name="Password">Password:</string>
     <string name="login">Login</string>
     <string name="crear_usuario">Crear Usuario</string>
     <string name="ingrese_correo">Ingrese su correo</string>
@@ -17,11 +17,11 @@
     <string name="salir">Salir</string>
     <string name="solicitud_de_viajes">Solicitud de viajes</string>
     <string name="solicitud_de_trasporte">Solicitud de trasporte</string>
-    <string name="direccion_recogida">Direccion Recogida</string>
-    <string name="direccion_de_destino">Direccion de destino</string>
-    <string name="dimensiones_del_paquete">Dimensiones del paquete</string>
-    <string name="digite_su_direccion">Digite su direccion</string>
-    <string name="digite_la_direccion">Digite la direccion</string>
+    <string name="direccion_recogida">Direccion Recogida:</string>
+    <string name="direccion_de_destino">Direccion de destino:</string>
+    <string name="dimensiones_del_paquete">Dimensiones del paquete:</string>
+    <string name="digite_su_direccion">Digite su direccion:</string>
+    <string name="digite_la_direccion">Digite la direccion:</string>
 
 
 </resources>

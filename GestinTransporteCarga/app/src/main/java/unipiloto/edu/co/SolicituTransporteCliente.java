@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -13,11 +14,17 @@ import unipiloto.edu.co.utilidades.Utilidades;
 
 public class SolicituTransporteCliente extends AppCompatActivity {
     EditText dimensionAncho,dimensionAlto,direccionDestino,direccionRecogida;
-   // String correo;
+    Bundle correo;
+    String correocliente;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitu_transporte_cliente);
+
+        correo= getIntent().getExtras();
+        correocliente=correo.getString("correoCliente2");
+        Log.d("prueba",correocliente);
         //se obtiene los datos del usuario para la solicitud de carga
         //MainActivity ini = new MainActivity();
         direccionRecogida=(EditText) findViewById(R.id.informacionDireccionOrigen);
@@ -40,8 +47,9 @@ public class SolicituTransporteCliente extends AppCompatActivity {
         values.put(Utilidades.CAMPO_DIRECCIONDESTINO,direccionDestino.getText().toString());
         values.put(Utilidades.CAMPO_DIMENSIONALTO,dimensionAncho.getText().toString());
         values.put(Utilidades.CAMPO_DIMESIONANCHO,dimensionAlto.getText().toString());
-        values.put(Utilidades.CAMPO_CORREOU,ini.CorreoUsuario);
-
+        values.put(Utilidades.CAMPO_ESTADO,"Pendiente");
+        values.put(Utilidades.CAMPO_CORREOPROPIETARIO,correocliente);
+       // Log.d("prueba3",correocliente);
 
 
         Long idResultante=db.insert(Utilidades.TABLA_SOLICITUDES,Utilidades.CAMPO_DIRECCIONRECOGIDA,values);

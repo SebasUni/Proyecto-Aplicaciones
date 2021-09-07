@@ -45,14 +45,19 @@ EditText correo,password;
             if (correo.getText().toString().equals(cursor.getString(0))){
                 if (password.getText().toString().equals(cursor.getString(1))){
                     if (cursor.getString(2).equals("Cliente")){
-                        CorreoUsuario=cursor.getString(0);
-                        cursor.close();
                         Intent intent = new Intent(this,InicioCliente.class);
+                        intent.putExtra("correoCliente",cursor.getString(0));
+                        cursor.close();
                         startActivity(intent);
                     }else{
                         if (cursor.getString(2).equals("Conductor")){}
                         else{
-                            if (cursor.getString(2).equals("Conductor")){}
+                            if (cursor.getString(2).equals("Propietario")){
+
+                                cursor.close();
+                                Intent intent = new Intent(this,InicioPropietario.class);
+                                startActivity(intent);
+                            }
                         }
                     }
 
