@@ -7,24 +7,45 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import unipiloto.edu.co.utilidades.Utilidades;
 
 public class CrearUsuario extends AppCompatActivity {
-    EditText nombre,apellido,correo,password,rol;
-
+    EditText nombre,apellido,correo,password;
+    String rol;
+    Spinner roles;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_usuario);
+        roles=findViewById(R.id.spinnerRoles);
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,
+                R.array.roles, android.R.layout.simple_spinner_item);
+        roles.setAdapter(adapter);
+        roles.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //rol.setText(parent.getItemAtPosition(position).toString());
+                rol=parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         nombre=(EditText) findViewById(R.id.editTextNombre);
         apellido=(EditText) findViewById(R.id.editTextTextApellido);
         correo=(EditText) findViewById(R.id.editTextTextCorreo);
         password=(EditText) findViewById(R.id.editTextTextPassword);
-        rol=(EditText) findViewById(R.id.editTextTextTipo);
+
 
 
     }
@@ -42,7 +63,7 @@ public class CrearUsuario extends AppCompatActivity {
         values.put(Utilidades.CAMPO_APELLIDO,apellido.getText().toString());
         values.put(Utilidades.CAMPO_CORREO,correo.getText().toString());
         values.put(Utilidades.CAMPO_PASSWORD,password.getText().toString());
-        values.put(Utilidades.CAMPO_ROL,rol.getText().toString());
+        values.put(Utilidades.CAMPO_ROL,rol);
 
         Long idResultante=db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_CORREO,values);
 

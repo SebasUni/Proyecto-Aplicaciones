@@ -38,16 +38,23 @@ EditText correo,password;
     private void consultar() {
         SQLiteDatabase db=conn.getReadableDatabase();
         String[] parametros={correo.getText().toString()};
-        String[] campos={Utilidades.CAMPO_CORREO,Utilidades.CAMPO_PASSWORD};
+        String[] campos={Utilidades.CAMPO_CORREO,Utilidades.CAMPO_PASSWORD,Utilidades.CAMPO_ROL};
         Cursor cursor= db.query(Utilidades.TABLA_USUARIO,campos,Utilidades.CAMPO_CORREO+"=?", parametros, null,null,null);
         cursor.moveToFirst();
         try {
             if (correo.getText().toString().equals(cursor.getString(0))){
                 if (password.getText().toString().equals(cursor.getString(1))){
-                    CorreoUsuario=cursor.getString(0);
-                    cursor.close();
-                    Intent intent = new Intent(this,InicioCliente.class);
-                    startActivity(intent);
+                    if (cursor.getString(2).equals("Cliente")){
+                        CorreoUsuario=cursor.getString(0);
+                        cursor.close();
+                        Intent intent = new Intent(this,InicioCliente.class);
+                        startActivity(intent);
+                    }else{
+                        if (cursor.getString(2).equals("Conductor")){}
+                        else{
+                            if (cursor.getString(2).equals("Conductor")){}
+                        }
+                    }
 
                 }
             }
