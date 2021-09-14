@@ -22,6 +22,12 @@
     <string name="dimensiones_del_paquete">Dimensiones del paquete:</string>
     <string name="digite_su_direccion">Digite su direccion:</string>
     <string name="digite_la_direccion">Digite la direccion:</string>
+    <string name="marca">Marca</string>
+    <string name="name">Name</string>
+    <string name="agregar">AGREGAR</string>
+    <string name="placa">Placa</string>
+    <string name="digite_su_marca">Digite su marca</string>
+    <string name="digite_su_placa">Digite su placa</string>
 
 
 </resources>

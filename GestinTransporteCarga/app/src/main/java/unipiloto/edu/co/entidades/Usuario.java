@@ -7,14 +7,24 @@ public class Usuario {
     private String correo;
     private String password;
     private String rol;
+    private String Idpropietario;
 
-    public Usuario( String nombre, String apellido, String correo, String password, String rol) {
+    public Usuario( String nombre, String apellido, String correo, String password, String rol, String Idpropietario) {
 
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.password = password;
         this.rol = rol;
+        this.Idpropietario=Idpropietario;
+    }
+
+    public String getIdpropietario() {
+        return Idpropietario;
+    }
+
+    public void setIdpropietario(String idpropietario) {
+        Idpropietario = idpropietario;
     }
 
     public String getNombre() {

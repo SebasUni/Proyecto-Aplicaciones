@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GestiónTransporteCarga">
         <activity
+            android:name=".AsignacionConductor"
+            android:exported="true" />
+        <activity
+            android:name=".AgregarVehiculoPropietario"
+            android:exported="true" />
+        <activity
             android:name=".AceptacionSolicitudesPropietario"
             android:exported="true" />
         <activity

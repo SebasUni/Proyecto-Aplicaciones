@@ -22,7 +22,7 @@ Spinner Solicitudpersonas;
 ArrayList<String> ListaSolicitud;
 ArrayList<Solicitud> SolicitudList;
 ConexionSQLiteHelper conn;
-TextView infocoreo,infodestino,inforecogida;
+TextView infocoreo,infodestino,inforecogida,infoaltura,infoancho;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +32,8 @@ TextView infocoreo,infodestino,inforecogida;
         infocoreo= (TextView) findViewById(R.id.textCorreo);
         infodestino= (TextView) findViewById(R.id.textDireccionDestino);
         inforecogida= (TextView) findViewById(R.id.textDireccionRecogida);
+        infoaltura= (TextView) findViewById(R.id.textView17);
+        infoancho= (TextView) findViewById(R.id.textView18);
     consultarSoliciud();
     ArrayAdapter<CharSequence> adaptador = new ArrayAdapter(this, android.R.layout.simple_spinner_item,ListaSolicitud);
 
@@ -44,10 +46,16 @@ TextView infocoreo,infodestino,inforecogida;
                 infocoreo.setText(SolicitudList.get(position-1).getCorreopropietario());
                 infodestino.setText(SolicitudList.get(position-1).getDireccionDestino());
                 inforecogida.setText(SolicitudList.get(position-1).getDireccionRecogida());
+                infoaltura.setText(SolicitudList.get(position-1).getDimensionAltura());
+                infoancho.setText(SolicitudList.get(position-1).getDimensionAncho());
             }else{
                 infocoreo.setText("");
                 infodestino.setText("");
                 inforecogida.setText("");
+                infoaltura.setText("");
+                infoancho.setText("");
+
+
             }
 
         }
@@ -69,7 +77,7 @@ TextView infocoreo,infodestino,inforecogida;
             envio.setDireccionRecogida(cursor.getString(0));
             envio.setDireccionDestino(cursor.getString(1));
             envio.setDimensionAltura(cursor.getString(2));
-            envio.setDimensionAltura(cursor.getString(3));
+            envio.setDimensionAncho(cursor.getString(3));
             envio.setEstado(cursor.getString(4));
             envio.setCorreopropietario(cursor.getString(5));
             SolicitudList.add(envio);
