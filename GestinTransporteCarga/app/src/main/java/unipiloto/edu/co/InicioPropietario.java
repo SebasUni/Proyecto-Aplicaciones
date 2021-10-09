@@ -64,4 +64,10 @@ public class InicioPropietario extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void AsignarVehiculo(View v){
+        Intent intent = new Intent(this,AsignacionConductor.class);
+        intent.putExtra("correoPropietario2",correoPropietarios.getString("correoPropietario"));
+        startActivity(intent);
+
+    }
 }

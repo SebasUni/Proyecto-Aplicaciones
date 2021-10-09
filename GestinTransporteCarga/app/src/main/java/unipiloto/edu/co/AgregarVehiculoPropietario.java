@@ -30,10 +30,10 @@ public class AgregarVehiculoPropietario extends AppCompatActivity {
         ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this,"bd_carros", null,1);
         SQLiteDatabase db= conn.getWritableDatabase();
         ContentValues values = new ContentValues();
-
+        correoPropietario= getIntent().getExtras();
         values.put(Utilidades.CAMPO_PLACA,placa.getText().toString());
         values.put(Utilidades.CAMPO_MARCA,marca.getText().toString());
-        values.put(Utilidades.CAMPO_CORREOCARROS,placa.getText().toString());
+        values.put(Utilidades.CAMPO_CORREOCARROS,correoPropietario.getString("correoPropietario2"));
 
         Long idResultante=db.insert(Utilidades.TABLA_CARROS,Utilidades.CAMPO_CORREO,values);
 

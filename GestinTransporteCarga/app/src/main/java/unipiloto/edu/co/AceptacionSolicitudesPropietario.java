@@ -83,6 +83,7 @@ TextView infocoreo,infodestino,inforecogida,infoaltura,infoancho;
             SolicitudList.add(envio);
 
         }
+        cursor.close();
         obtenerLista();
     }
 

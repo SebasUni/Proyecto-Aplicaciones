@@ -34,5 +34,5 @@ public class Utilidades {
     public static String CAMPO_MARCA="marca";
     public static String CAMPO_CONDUCTOR="conductor";
 
-    public static final String CREAR_TABLA_CARROS="CREATE TABLE "+""+TABLA_CARROS+"("+CAMPO_CORREOCARROS+" TEXT, "+CAMPO_PLACA+" TEXT, "+ CAMPO_MARCA+" TEXT, "+CAMPO_CONDUCTOR+" TEXT)";
+    public static final String CREAR_TABLA_CARROS="CREATE TABLE "+""+TABLA_CARROS+"("+CAMPO_PLACA+" TEXT,"+CAMPO_CORREOCARROS+" TEXT,  "+ CAMPO_MARCA+" TEXT, "+CAMPO_CONDUCTOR+" TEXT)";
 }

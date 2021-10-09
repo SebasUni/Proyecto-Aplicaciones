@@ -12,7 +12,9 @@ public class Carros {
         this.marca = marca;
         this.conductor=conductor;
     }
+    public Carros() {
 
+    }
     public String getPlaca() {
         return placa;
     }

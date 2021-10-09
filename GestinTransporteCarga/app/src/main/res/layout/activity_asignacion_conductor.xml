@@ -6,4 +6,220 @@
     android:layout_height="match_parent"
     tools:context=".AsignacionConductor">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/spinnerVehiculos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="30dp"
+                    app:layout_constraintBottom_toTopOf="@+id/TextAsigPlaca"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="304dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Tus conductores "
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/spinnerConductores"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <Spinner
+                    android:id="@+id/spinnerConductores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="15dp"
+                    app:layout_constraintBottom_toTopOf="@+id/TextAsigNombre"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.473"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="248dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Tus Vehiculos"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/spinnerVehiculos"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/Textonombre"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView19"
+                    app:layout_constraintEnd_toStartOf="@+id/TextAsigNombre"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerConductores"
+                    app:layout_constraintVertical_bias="0.00999999" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/Textoapellido"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView12"
+                    app:layout_constraintEnd_toStartOf="@+id/TextAsigApellido"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="50dp"
+                    android:text="@string/marca"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonAsignar"
+                    app:layout_constraintEnd_toStartOf="@+id/TextAsigMarca"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/placa"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/textView20"
+                    app:layout_constraintEnd_toStartOf="@+id/TextAsigPlaca"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerVehiculos"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <EditText
+                    android:id="@+id/TextAsigNombre"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="68dp"
+                    android:layout_marginBottom="8dp"
+                    android:editable="true"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:inputType="textPersonName"
+                    app:layout_constraintBottom_toTopOf="@+id/TextAsigApellido"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView13"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerConductores" />
+
+                <EditText
+                    android:id="@+id/TextAsigApellido"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="45dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="68dp"
+                    android:layout_marginBottom="40dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:inputType="textPersonName"
+                    app:layout_constraintBottom_toTopOf="@+id/textView12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView19"
+                    app:layout_constraintTop_toBottomOf="@+id/TextAsigNombre" />
+
+                <EditText
+                    android:id="@+id/TextAsigPlaca"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="57dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="74dp"
+                    android:editable="false"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:inputType="textPersonName"
+                    app:layout_constraintBottom_toTopOf="@+id/TextAsigMarca"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView21"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerVehiculos" />
+
+                <EditText
+                    android:id="@+id/TextAsigMarca"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="52dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="73dp"
+                    android:layout_marginBottom="59dp"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:inputType="textPersonName"
+                    app:layout_constraintBottom_toTopOf="@+id/buttonAsignar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView20"
+                    app:layout_constraintTop_toBottomOf="@+id/TextAsigPlaca" />
+
+                <Button
+                    android:id="@+id/buttonAsignar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="143dp"
+                    android:layout_marginEnd="174dp"
+                    android:layout_marginBottom="50dp"
+                    android:text="Asignar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TextAsigMarca" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

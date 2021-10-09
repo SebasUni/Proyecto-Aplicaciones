@@ -18,7 +18,10 @@ public class Usuario {
         this.rol = rol;
         this.Idpropietario=Idpropietario;
     }
+    public Usuario( ) {
 
+
+    }
     public String getIdpropietario() {
         return Idpropietario;
     }
