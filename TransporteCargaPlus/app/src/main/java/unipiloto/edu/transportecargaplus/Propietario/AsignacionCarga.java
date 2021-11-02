@@ -1,12 +1,17 @@
 package unipiloto.edu.transportecargaplus.Propietario;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,15 +22,27 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import unipiloto.edu.transportecargaplus.Controlador.ConexionSQLiteHelper;
 import unipiloto.edu.transportecargaplus.Controlador.Utilidades;
 import unipiloto.edu.transportecargaplus.Entidades.SolicitudVehicular;
+import unipiloto.edu.transportecargaplus.Entidades.Usuario;
 import unipiloto.edu.transportecargaplus.Entidades.Vehiculo;
 import unipiloto.edu.transportecargaplus.Main.NewUser;
 import unipiloto.edu.transportecargaplus.R;
 
 public class AsignacionCarga extends AppCompatActivity {
+    String sEmail,sPassword,idusuario,email;
     String s;
     Bundle  IdPropietario;
     ConexionSQLiteHelper conn;
@@ -37,6 +54,8 @@ public class AsignacionCarga extends AppCompatActivity {
     private ArrayList<Vehiculo> VehiculoLista;
     private ArrayList<String> ListaVehiculo;
     String idsolicitud;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +78,10 @@ public class AsignacionCarga extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 if (position !=0){
                     origen.setText(CargaLista.get(position-1).getDireccionOrigen());
-                    destino.setText(CargaLista.get(position-1).getDireccionOrigen());
+                    destino.setText(CargaLista.get(position-1).getDireccionDestino());
                     idsolicitud=CargaLista.get(position-1).getIdSolitud();
+                    idusuario= CargaLista.get(position-1).getIdusuario();
+                    BuscarUsuario(idusuario);
                 }else{
                     origen.setText("");
                     destino.setText("");
@@ -75,6 +96,10 @@ public class AsignacionCarga extends AppCompatActivity {
             }
         });
 
+
+        sEmail="proyectapitransport@gmail.com";
+        sPassword="Proyectoapi1";
+
         listaVehiculos(IdPropietario.getString("IdPropietario"));
         ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item,ListaVehiculo);
         spinervehiculo.setAdapter(adapter2);
@@ -82,11 +107,102 @@ public class AsignacionCarga extends AppCompatActivity {
         asignar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            actualizarSolicitud();
-             atras();
+                //inicializacion propiedades email
+                Properties properties= new Properties();
+                properties.put("mail.smtp.auth","true");
+                properties.put("mail.smtp.starttls.enable","true");
+                properties.put("mail.smtp.host","smtp.gmail.com");
+                properties.put("mail.smtp.port","587");
+
+                //inicializ
+
+                Session session = Session.getInstance(properties, new Authenticator() {
+                    @Override
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(sEmail,sPassword);
+                    }
+                });
+
+                try {
+                    //mensaje sender
+                    Message message= new MimeMessage(session);
+                    message.setFrom(new InternetAddress(sEmail));
+                    //recipient email
+                    message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(email.trim()) );
+                    //email subjet
+                    message.setSubject("INFROMACION DE SU PEDIDO".trim());
+                    //eMAIL MESSAGE
+                    message.setText("Su pedido ya fue asignado a un repartidor con la siguiente informacion: \n "+"\n"
+                            +"Direccion de origen:"+origen.getText().toString()+"\n"
+                            +"Direccion de destino: "+destino.getText().toString() +"\n"
+                            +"Estado del envio: En proceso \n"
+                            +"Numero de solicitud:"+idsolicitud+"\n"+"\n"
+                            +"Gracias por su colaboracion y atencion \n".trim());
+                    //sen email
+
+                    new SendMail().execute(message);
+                } catch (MessagingException e) {
+                    e.printStackTrace();
+                }
+
+                actualizarSolicitud();
+
             }
         });
 
+        // email
+
+
+    }
+    private class SendMail extends AsyncTask<Message,String,String> {
+        //
+        private ProgressDialog progesDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            //crear
+            progesDialog =progesDialog.show( AsignacionCarga.this,"PLEASE WAIT",
+                    "Sending Mial....",true,false);
+        }
+
+        @Override
+        protected String doInBackground(Message... messages) {
+            try {
+
+                Transport.send(messages[0]);
+                return "Success";
+            } catch (MessagingException e) {
+
+                e.printStackTrace();
+                return "Error";
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progesDialog.dismiss();
+            if (s.equals("Success")){
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(AsignacionCarga.this);
+                builder.setCancelable(false);
+                builder.setTitle(Html.fromHtml("<font color= '#509324'>Success</font>"));
+                builder.setMessage("mail sen successfully.");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        atras();
+
+                    }
+                });
+                builder.show();
+            }else{
+                Toast.makeText(getApplicationContext(),"Somenthing went wrong ?", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
     public void listcarga(String name){
         conn= new ConexionSQLiteHelper(getApplicationContext(),"bd_solicitud",null,1);
@@ -168,4 +284,20 @@ public class AsignacionCarga extends AppCompatActivity {
         finish();
 
     }
+
+    public void BuscarUsuario(String id){
+        conn= new ConexionSQLiteHelper(getApplicationContext(),"bd_usuarios",null,1);
+        SQLiteDatabase dbs = conn.getReadableDatabase();
+        Usuario envio=null;
+        //Usu= new ArrayList<Usuario>();
+        //
+        Cursor cursor=dbs.rawQuery("SELECT * FROM USUARIO WHERE IDUSUARIO=? ", new String[]{id});
+        while (cursor.moveToNext()){
+            envio=new Usuario();
+            envio.setEmail(cursor.getString(3));
+           email=cursor.getString(3);
+        }
+
+    }
+
 }

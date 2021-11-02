@@ -62,6 +62,7 @@ public class AgregarCarro extends AppCompatActivity {
         values.put(Utilidades.CAMPO_IDPROPIETARIO,s);
         values.put(Utilidades.CAMPO_IDCONDUCTOR,"Sin Asignar");
 
+
         Long idResultante=db.insert(Utilidades.TABLA_VEHICULO,Utilidades.CAMPO_IDVEHICULO,values);
 
         Toast.makeText( getApplicationContext(),"Id Registro:"+ idResultante, Toast.LENGTH_SHORT).show();

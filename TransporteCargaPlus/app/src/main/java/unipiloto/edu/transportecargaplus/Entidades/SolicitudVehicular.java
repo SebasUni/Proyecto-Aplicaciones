@@ -9,8 +9,11 @@ public class SolicitudVehicular {
     private String idvehiculo;
     private String idusuario;
     private String estado;
+    private String horarecogida;
+    private String horallegada;
+    private String ubicacion;
 
-    public SolicitudVehicular(String idSolitud, String direccionOrigen, String direccionDestino, String tamanoAlto, String tamanoAncho,String idvehiculo,String estado,String idusuario) {
+    public SolicitudVehicular(String idSolitud, String direccionOrigen, String direccionDestino, String tamanoAlto, String tamanoAncho,String idvehiculo,String estado,String idusuario, String horarecogida, String horallegada, String ubicacion) {
         this.idSolitud = idSolitud;
         this.direccionOrigen = direccionOrigen;
         this.direccionDestino = direccionDestino;
@@ -22,6 +25,30 @@ public class SolicitudVehicular {
     }
     public SolicitudVehicular() {
 
+    }
+
+    public String getHorarecogida() {
+        return horarecogida;
+    }
+
+    public void setHorarecogida(String horarecogida) {
+        this.horarecogida = horarecogida;
+    }
+
+    public String getHorallegada() {
+        return horallegada;
+    }
+
+    public void setHorallegada(String horallegada) {
+        this.horallegada = horallegada;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
     public String getIdusuario() {

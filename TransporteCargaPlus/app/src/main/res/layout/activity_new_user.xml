@@ -71,9 +71,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="35dp"
                     android:layout_marginTop="45dp"
-                    android:layout_marginBottom="70dp"
                     android:text="@string/password"
-                    app:layout_constraintBottom_toTopOf="@+id/textView"
+                    app:layout_constraintBottom_toTopOf="@+id/textView30"
                     app:layout_constraintEnd_toStartOf="@+id/NewEdiPassword"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -140,12 +139,12 @@
                     android:layout_marginStart="29dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginEnd="72dp"
-                    android:layout_marginBottom="55dp"
+                    android:layout_marginBottom="11dp"
                     android:ems="10"
                     android:hint="@string/digite_su_contrase_a"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
-                    app:layout_constraintBottom_toTopOf="@+id/textView"
+                    app:layout_constraintBottom_toTopOf="@+id/NewEdiTelfono"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/NewTextPassword"
                     app:layout_constraintTop_toBottomOf="@+id/NewEdiEmail"
@@ -156,6 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="144dp"
+                    android:layout_marginTop="29dp"
                     android:layout_marginEnd="167dp"
                     android:text="Que rol eres ?"
                     android:textSize="16sp"
@@ -164,7 +164,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/NewEdiPassword" />
+                    app:layout_constraintTop_toBottomOf="@+id/NewEdiTelfono" />
 
                 <Spinner
                     android:id="@+id/spinner"
@@ -185,14 +185,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="35dp"
-                    android:layout_marginTop="175dp"
+                    android:layout_marginTop="180dp"
                     android:layout_marginBottom="60dp"
                     android:text="IDpropietario"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toTopOf="@+id/button"
                     app:layout_constraintEnd_toStartOf="@+id/NewEdiIdpropietario"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/NewTextPassword" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
                 <EditText
                     android:id="@+id/NewEdiIdpropietario"
@@ -223,6 +223,33 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/NewEdiIdpropietario" />
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="36dp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginBottom="70dp"
+                    android:text="Telefono"
+                    app:layout_constraintBottom_toTopOf="@+id/textView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/NewTextPassword" />
+
+                <EditText
+                    android:id="@+id/NewEdiTelfono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="38dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="73dp"
+                    android:layout_marginBottom="28dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    app:layout_constraintBottom_toTopOf="@+id/textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView30"
+                    app:layout_constraintTop_toBottomOf="@+id/NewEdiPassword" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

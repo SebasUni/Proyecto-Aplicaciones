@@ -2,31 +2,36 @@ package unipiloto.edu.transportecargaplus.Propietario;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.CpuUsageInfo;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import unipiloto.edu.transportecargaplus.Controlador.ConexionSQLiteHelper;
+import unipiloto.edu.transportecargaplus.Controlador.Utilidades;
 import unipiloto.edu.transportecargaplus.Entidades.Usuario;
 import unipiloto.edu.transportecargaplus.Entidades.Vehiculo;
 import unipiloto.edu.transportecargaplus.R;
 
 public class AsignarConductor extends AppCompatActivity {
-
-    String s;
+    Button asignar;
+    String s,usuario,PLACAP;
     Bundle  IdPropietario;
     Spinner SpinerListaVehiculos,SpinerUsuarios;
     ArrayList<String> ListaVehiculos;
     ConexionSQLiteHelper conn;
-    EditText placa,marca,conductor;
+    EditText placa,marca,conductor, nombre, apellido;
    ArrayList<Vehiculo> VehiculosLista;
     private ArrayList<Usuario> UsuarioLista;
     private ArrayList<String> ListaUsuario;
@@ -43,6 +48,10 @@ public class AsignarConductor extends AppCompatActivity {
         marca= findViewById(R.id.EditMarcaAsignacion);
         conductor=findViewById(R.id.EditConductorAsignacion);
 
+        nombre=findViewById(R.id.editTextNombre);
+        apellido=findViewById(R.id.editTextApellido);
+
+        asignar=findViewById(R.id.button10);
 
         SpinerListaVehiculos=findViewById(R.id.ListaVehiculos);
         SpinerUsuarios=findViewById(R.id.spinnerConductores);
@@ -58,8 +67,11 @@ public class AsignarConductor extends AppCompatActivity {
                     placa.setText(VehiculosLista.get(position-1).getPlaca());
                     marca.setText(VehiculosLista.get(position-1).getMarca());
                     conductor.setText(VehiculosLista.get(position-1).getIdconductor());
+                    PLACAP=VehiculosLista.get(position-1).getPlaca();
                 }else{
-
+                    placa.setText("");
+                    marca.setText("");
+                    conductor.setText("");
                 }
 
             }
@@ -73,6 +85,33 @@ public class AsignarConductor extends AppCompatActivity {
         listUsuarios(IdPropietario.getString("IdPropietario"));
         ArrayAdapter<CharSequence> adapter2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item,ListaUsuario);
         SpinerUsuarios.setAdapter(adapter2);
+
+        SpinerUsuarios.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                if (position != 0){
+                    nombre.setText(UsuarioLista.get(position-1).getNombre());
+                    apellido.setText(UsuarioLista.get(position-1).getApellido());
+                    usuario=UsuarioLista.get(position-1).getIdusuario();
+                }else{
+                    nombre.setText("");
+                    apellido.setText("");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+    asignar.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            asignarConducor();
+        }
+    });
 
 
     }
@@ -96,13 +135,13 @@ public class AsignarConductor extends AppCompatActivity {
         }
         obtenerLista();
     }
-
     private void obtenerLista() {
         ListaVehiculos=new ArrayList<String>();
         ListaVehiculos.add("Slecciones");
         for (int i=0;i<VehiculosLista.size();i++){
             ListaVehiculos.add("Placa: "+VehiculosLista.get(i).getPlaca());
         }
+
     }
 
 
@@ -127,13 +166,28 @@ public class AsignarConductor extends AppCompatActivity {
         }
         obtenerLista2();
     }
-
     private void obtenerLista2() {
+
         ListaUsuario=new ArrayList<String>();
         ListaUsuario.add("Slecciones");
         for (int i=0;i<UsuarioLista.size();i++){
-            ListaUsuario.add("Nombre: "+UsuarioLista.get(i).getNombre()+" Apellido: "+UsuarioLista.get(i).getApellido());
+            ListaUsuario.add("Nombre: "+UsuarioLista.get(i).getNombre());
         }
+    }
+
+
+    private void asignarConducor(){
+        conn= new ConexionSQLiteHelper(getApplicationContext(),"bd_vehiculos",null,1);
+        SQLiteDatabase dbs = conn.getWritableDatabase();
+        String[] parametro = {PLACAP};
+        Log.d("prueba1",PLACAP);
+        ContentValues values =new ContentValues();
+        values.put(Utilidades.CAMPO_IDCONDUCTOR,usuario);
+        dbs.update(Utilidades.TABLA_VEHICULO,values,Utilidades.CAMPO_PLACA+"=?",parametro);
+        Toast.makeText(getApplicationContext(),"se actualizo",Toast.LENGTH_LONG).show();
+       // dbs.close();
+
+
     }
 
 }

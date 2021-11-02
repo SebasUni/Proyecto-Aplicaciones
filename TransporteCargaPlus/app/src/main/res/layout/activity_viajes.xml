@@ -25,11 +25,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="66dp"
         android:layout_marginTop="34dp"
-        android:layout_marginEnd="287dp"
         android:layout_marginBottom="37dp"
         android:text="Origen"
         app:layout_constraintBottom_toTopOf="@+id/textView27"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewOrigen"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerVieajes" />
 
@@ -37,24 +36,59 @@
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="73dp"
+        android:layout_marginStart="66dp"
         android:layout_marginTop="36dp"
         android:text="Destino"
+        app:layout_constraintEnd_toStartOf="@+id/textViewDestino"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/buttonRecoger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="147dp"
-        android:layout_marginTop="211dp"
+        android:layout_marginTop="96dp"
         android:layout_marginEnd="170dp"
-        android:text="Button"
-        android:onClick="mapas"
+        android:text="Recoger"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDestino" />
+
+    <TextView
+        android:id="@+id/textViewOrigen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView26"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerVieajes" />
+
+    <TextView
+        android:id="@+id/textViewDestino"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView27"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOrigen" />
+
+    <Button
+        android:id="@+id/buttonEntrega"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="169dp"
+        android:text="Entrega"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerVieajes" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonRecoger" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

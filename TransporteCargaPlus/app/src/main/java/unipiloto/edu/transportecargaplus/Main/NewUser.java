@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,11 +22,13 @@ import unipiloto.edu.transportecargaplus.Entidades.Usuario;
 import unipiloto.edu.transportecargaplus.R;
 
 public class NewUser extends AppCompatActivity {
-    EditText nombre,apellido,correo,password,idpropietario;
+    EditText nombre,apellido,correo,password, infoidpropietario, telefono;
+    TextView idpropietario;
     private ArrayList<Usuario> UsuarioLista;
     private ArrayList<String> ListaUsurio;
     Spinner roles;
     String rol;
+    private ArrayList<Usuario> UsuarioLista2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,10 @@ public class NewUser extends AppCompatActivity {
         apellido= findViewById(R.id.NewEdiApellido);
         correo= findViewById(R.id.NewEdiEmail);
         password= findViewById(R.id.NewEdiPassword);
-        idpropietario= findViewById(R.id.NewEdiIdpropietario);
+        infoidpropietario= findViewById(R.id.NewEdiIdpropietario);
+        idpropietario= findViewById(R.id.NewTextIdpropietario);
+        telefono=findViewById(R.id.NewEdiTelfono);
+
         roles=findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.roles, android.R.layout.simple_spinner_item);
         roles.setAdapter(adapter);
@@ -48,8 +54,8 @@ public class NewUser extends AppCompatActivity {
                 rol=parent.getItemAtPosition(position).toString();
                 if (position==1){
 
-                    //idpropietario.setVisibility(View.VISIBLE);
-                    //infoidpropietario.setVisibility(View.VISIBLE);
+                    idpropietario.setVisibility(View.VISIBLE);
+                    infoidpropietario.setVisibility(View.VISIBLE);
 
                 }else{
 
@@ -77,7 +83,8 @@ public class NewUser extends AppCompatActivity {
         values.put(Utilidades.CAMPO_CORREO,correo.getText().toString());
         values.put(Utilidades.CAMPO_PASSWORD,password.getText().toString());
         values.put(Utilidades.CAMPO_ROL,rol);
-        values.put(Utilidades.CAMPO_IDPROPIETARIO,idpropietario.getText().toString());
+        values.put(Utilidades.CAMPO_IDPROPIETARIO,infoidpropietario.getText().toString());
+        values.put(Utilidades.CAMPO_TELEFONO,telefono.getText().toString());
         Long idResultante=db.insert(Utilidades.TABLA_USUARIO,Utilidades.CAMPO_IDUSUARIO,values);
 
         Toast.makeText( getApplicationContext(),"Id Registro:"+ idResultante, Toast.LENGTH_SHORT).show();
@@ -105,6 +112,7 @@ public class NewUser extends AppCompatActivity {
         }
 
     }
+
 
 
 }

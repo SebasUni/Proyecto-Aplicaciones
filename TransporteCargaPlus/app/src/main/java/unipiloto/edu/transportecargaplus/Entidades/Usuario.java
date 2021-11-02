@@ -8,8 +8,9 @@ public class Usuario {
     private String password;
     private String rol;
     private String idpropietario;
+    private String telefono;
 
-    public Usuario(String idusuario, String nombre, String apellido, String email, String password, String rol, String idpropietario) {
+    public Usuario(String idusuario, String nombre, String apellido, String email, String password, String rol, String idpropietario,String telefono) {
         this.idusuario = idusuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -17,10 +18,20 @@ public class Usuario {
         this.password = password;
         this.rol = rol;
         this.idpropietario = idpropietario;
+        this.telefono=telefono;
     }
     public Usuario() {
 
     }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     public String getIdusuario() {
         return idusuario;
     }

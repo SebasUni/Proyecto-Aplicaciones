@@ -11,14 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
-        android:layout_marginTop="190dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="54dp"
         android:layout_marginBottom="10dp"
         android:text="@string/email"
         app:layout_constraintBottom_toTopOf="@+id/MainTextPassword"
         app:layout_constraintEnd_toStartOf="@+id/EdiEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="41dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="100dp"
         android:text="@string/password"
         app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
@@ -39,16 +39,16 @@
         android:id="@+id/EdiEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="71dp"
         android:ems="10"
+        android:hint="Digite su Email"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:hint="Digite su Email"
         app:layout_constraintBottom_toTopOf="@+id/EdiPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/MainTextEmail"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/EdiPassword"
@@ -101,4 +101,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="194dp"
+        android:layout_height="202dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/EdiEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
