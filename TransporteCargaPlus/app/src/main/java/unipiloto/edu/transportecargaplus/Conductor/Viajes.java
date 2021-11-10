@@ -92,7 +92,8 @@ public class Viajes extends AppCompatActivity {
                 if(position !=0 ){
                     origen.setText(CargaLista.get(position-1).getDireccionOrigen());
                     destino.setText(CargaLista.get(position-1).getDireccionDestino());
-                    id=CargaLista.get(position-1).getIdSolitud();
+                    id=CargaLista.get(position-1).getIdusuario();
+                    InfoUsuario(id);
                     idsolicitud=CargaLista.get(position-1).getIdSolitud();
                     if (CargaLista.get(position-1).getEstado().equals("Entregado")){
                         recoger.setVisibility(View.INVISIBLE);
@@ -266,7 +267,7 @@ public class Viajes extends AppCompatActivity {
         while (cursor.moveToNext()){
 
             email=cursor.getString(3);
-
+            Log.d("email: ", email.toString());
         }
 
     }
@@ -341,6 +342,7 @@ public class Viajes extends AppCompatActivity {
             Message message= new MimeMessage(session);
             message.setFrom(new InternetAddress(sEmail));
             //recipient email
+
             message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(email.trim()) );
             //email subjet
             message.setSubject("INFROMACION DE SU PEDIDO".trim());
@@ -352,7 +354,7 @@ public class Viajes extends AppCompatActivity {
                     +"Direccion de origen:"+origen.getText().toString()+"\n"
                     +"Direccion de destino: "+destino.getText().toString() +"\n"
                     +"Estado del envio: "+estado+" \n"
-                    +"Numero de solicitud:"+id+"\n"
+                    +"Numero de solicitud:"+idsolicitud+"\n"
                     +"El dia:"+currentDateandTime+"\n"
                     +"Para saber en donde se encuentra su paquete inngrese al link, el cual la llevara a la ultima ubicacion reportada: https://maps.google.com/maps?daddr="+ubicacion.getLatitude()+","+ubicacion.getLongitude() +"\n"
                     +"Gracias por su colaboracion y atencion \n".trim());
